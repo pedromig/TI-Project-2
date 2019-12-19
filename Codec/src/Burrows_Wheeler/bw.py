@@ -1,13 +1,4 @@
-import sys
-
-
-class bwt_encoder:
-    """
-        Transforma um bloco de caracteres em uma seqüência
-        mais facilmente comprimível usando o método de
-        Burrows-Wheeler, de acordo com o descrito em
-
-    """
+class BurrowsWheelerEncoder:
 
     def get_permutations(self, str):
         """
@@ -31,7 +22,7 @@ class bwt_encoder:
         perms.sort()
         last_column = ''
         for line in perms:
-            last_column = last_column + line[len(line) - 1]
+            last_column += line[len(line) - 1]
         index = 0
         for index in range(0, len(perms)):
             if perms[index] == str:
@@ -39,7 +30,7 @@ class bwt_encoder:
         return (index, last_column)
 
 
-class bwt_decoder:
+class BurrowsWheelerDecoder:
     """
         Faz a transformação reversa da
         descrita em bwt_encode.
@@ -85,11 +76,11 @@ if __name__ == "__main__":
     str = "Hello World"
 
     # encode
-    encoder = bwt_encoder()
+    encoder = BurrowsWheelerEncoder()
     (index, last_column) = encoder.encode(str)
     print('encoded:', index, last_column)
 
     # decode
-    decoder = bwt_decoder()
+    decoder = BurrowsWheelerDecoder()
     decoded = decoder.decode(last_column, index)
     print('decoded:', decoded)

@@ -21,8 +21,7 @@ import Codec.src.PPmd.ppmmodel as ppmmodel
 python3 = sys.version_info.major >= 3
 
 # Must be at least -1 and match decompress.py. Warning: Exponential memory usage at O(257^n).
-MODEL_ORDER = 3
-
+MODEL_ORDER = 1
 
 def compress(inp, bitout):
     # Set up encoder and model. In this PPM model, symbol 256 represents EOF;
