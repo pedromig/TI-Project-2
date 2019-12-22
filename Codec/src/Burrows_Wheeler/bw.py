@@ -1,48 +1,34 @@
 class BurrowsWheelerEncoder:
 
-    def get_permutations(self, str):
-        """
-            Cria as permutações de um bloco que são
-            necessárias ao BWT.
-        """
-        ret = []
-        for i in range(0, len(str)):
-            ret = ret + [str[i:] + str[0:i]]
+    def get_permutations(self, string):
+
+        ret = list()
+        for i in range(len(string)):
+            ret = ret + [string[i:] + string[:i]]
         return ret
 
-    def encode(self, str):
-        """
-            A "codificação" corresponde simplesmente a se
-            selecionar a última coluna da matriz de
-            permutações ordenadas lexicograficamente,
-            além de informar a posição da cadeia original
-            nesta matriz de permutações.
-        """
-        perms = self.get_permutations(str)
+    def encode(self, string):
+        index = 0
+
+        perms = self.get_permutations(string)
         perms.sort()
-        last_column = ''
+
+        last_column = ""
+
         for line in perms:
             last_column += line[len(line) - 1]
-        index = 0
+
         for index in range(0, len(perms)):
-            if perms[index] == str:
+            if perms[index] == string:
                 break
-        return (index, last_column)
+
+        return index, last_column
 
 
 class BurrowsWheelerDecoder:
-    """
-        Faz a transformação reversa da
-        descrita em bwt_encode.
-    """
 
     def get_indexes(self, str, sorted):
-        """
-            Os índices mapeiam cada símbolo da cadeia
-            "codificada" com os símbolos da cadeia
-            ordenada. Esta lista de índices é o
-            elemento essencial na transformação reversa.
-        """
+
         used_pos = dict()
         indexes = []
         for i in range(0, len(str)):
@@ -54,12 +40,7 @@ class BurrowsWheelerDecoder:
         return indexes
 
     def decode(self, str, index):
-        """
-            Usando a lista de índices calculadas no método
-            get_indexes e o índice correspondentes a linha
-            original na matriz, reconstruímos a linha
-            original, que corresponde ao arquivo decodificado.
-        """
+
         sorted = [str[i] for i in range(0, len(str))]
         sorted.sort()
         indexes = self.get_indexes(str, sorted)
@@ -80,7 +61,7 @@ if __name__ == "__main__":
     (index, last_column) = encoder.encode(str)
     print('encoded:', index, last_column)
 
-    # decode
+    '''# decode
     decoder = BurrowsWheelerDecoder()
     decoded = decoder.decode(last_column, index)
-    print('decoded:', decoded)
+    print('decoded:', decoded)'''
