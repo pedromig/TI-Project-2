@@ -78,6 +78,5 @@ if __name__ == '__main__':
     war_and_peace_path = "../DataSets/war_and_peace.txt"
     image_path = "../DataSets/cromenco_c10.bmp"
 
-    imageBwCompress(image_path, generic_path + "bw_Image.txt")
-    rle_compress(generic_path + "bw_Image.txt", generic_path + "bw_rle_Image.txt")
-    bzip2Compress(generic_path + "bw_rle_Image.txt", generic_path + "bw_rle_ppm_Image.txt")
+    bwCompress(war_and_peace_path, generic_path + "bw.txt")
+    bzip2Compress( generic_path + "bw.txt", generic_path + "bw_bzip2.txt")
