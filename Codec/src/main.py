@@ -1,12 +1,13 @@
 import base64
 import bz2 as bzip2
 import contextlib
+import os
 
 from PIL import Image
 
-import Codec.src.PPmd.compress as ppm
+import Codec.src.PPM.compress as ppm
 from Codec.src.Burrows_Wheeler.bw import BurrowsWheelerEncoder
-from Codec.src.PPmd import arithmeticcoding
+from Codec.src.PPM import arithmeticcoding
 from Codec.src.RLE.rle import encodeRLE, toString
 
 
@@ -73,10 +74,26 @@ def imageBwCompress(input, output):
         out.write(data)
 
 
+def textCompression(input, output):
+    bwCompress(input, generic_path + "bw.txt")
+    rle_compress(generic_path + "bw.txt", generic_path + "bw_rle.txt")
+    bzip2Compress(generic_path + "bw_rle.txt", output)
+    os.remove(generic_path + "bw.txt")
+    os.remove(generic_path + "bw_rle.txt")
+
+
+def imageCompression(input, output):
+    imageBwCompress(input, generic_path + "bw.txt")
+    rle_compress(generic_path + "bw.txt", generic_path + "bw_rle.txt")
+    bzip2Compress(generic_path + "bw_rle.txt", output)
+    os.remove(generic_path + "bw.txt")
+    os.remove(generic_path + "bw_rle.txt")
+
+
 if __name__ == '__main__':
     generic_path = "../DataSets/"
     war_and_peace_path = "../DataSets/war_and_peace.txt"
     image_path = "../DataSets/cromenco_c10.bmp"
 
-    bwCompress(war_and_peace_path, generic_path + "bw.txt")
-    bzip2Compress( generic_path + "bw.txt", generic_path + "bw_bzip2.txt")
+    textCompression(war_and_peace_path, generic_path + "war_and_peace_compressed.txt")
+    imageCompression(image_path, generic_path + "cromenco_c10_compressed.bmp")

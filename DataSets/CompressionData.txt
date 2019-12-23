@@ -1,0 +1,136 @@
+############################################################
+Tab2 - DataSet
+
+IMAGE = 33 987 318 bytes
+TEXT = 3 359 549 bytes
+############################################################
+Tab3 - Individual aplication of the algorithms
+
+Bzip2:
+	IMAGE = 7 717 164 bytes --> 4,404120218 ratio
+	TEXT = 888 454 bytes --> 3,781342647 ratio
+	
+	
+PPM:
+	IMAGE = 8 205 563 bytes --> 4,141984895 ratio
+	TEXT(Markov model of order 1) = 1 439 861 bytes --> 2,333245362 ratio
+	---------------------------------------
+	TEXT(Markov model of order 3) = 936 283 bytes
+	
+
+PNG:
+	IMAGE = 12 772 549 bytes --> 2,660965951 ratio
+	
+	
+BW:
+	IMAGE = 45 729 625 bytes --> 0,7432 ratio
+	TEXT = 3 473 091 bytes  --> 0,9673 ratio
+	
+BW_RLE:
+	IMAGE = 32 302 300 bytes --> 1,0522 ratio
+	TEXT = 3 456 008 bytes --> 0,97208 ratio
+	
+	
+############################################################
+Tab4 - Some combinations 
+
+BW_RLE_PPM:
+	IMAGE = 18 893 541 bytes
+	TEXT = 1 965 284 bytes
+	
+	BW_RLE_PPM(folder):
+
+	IMAGE:
+		bw -->  0.74322319 ratio
+		bw_rle -->  1.0521640 ratio
+		bw_rle_bzip2 -->  1.7988856 ratio
+	TEXT:
+		bw -->  0.96730808 ratio
+		bw_rle -->  0.97208947 ratio
+		bw_rle_bzip2 --> 1.7094470 ratio
+
+PPM_Bzip2:
+	IMAGE = 10 939 387 bytes
+	TEXT = 1 446 760 bytes
+	
+	PPM_Bzip2(folder):
+	IMAGE:
+		ppm --> 4.1419849 ratio
+		ppm_bzip2 --> 3.1068759 ratio
+	TEXT:
+		ppm(menor tamanho) --> 3.5881769 ratio
+		ppm (maior tamanho) --> 2.3332454 ratio
+		ppm_bzip2 = 2.3221191 ratio
+
+PNG_Bzip2:
+	IMAGE = 12 272 731 bytes
+	
+	PNG_Bzip2(folder):
+	IMAGE:
+		png --> 2.6609660 ratio
+		png_bzip2 --> 2.7693362 ratio
+
+PNG_PPM:
+	IMAGE = 12 234 415 bytes
+	
+	PNG_PPM(folder):
+	IMAGE:
+		png --> 2.6609660 ratio
+		png_ppm --> 2.7780092 ratio
+	
+BW_Bzip2:
+	IMAGE --> 17 342 202 bytes
+	TEXT --> 1 954 283 bytes
+	
+	BW_Bzip2:
+	IMAGE:
+		bw --> 0.74322319 ratio
+		bw_bzip2 --> 1.9598041 ratio
+	TEXT:
+		bw --> 0.96730808 ratio
+		bw_bzip2 --> 1.7204908 ratio
+
+Bzip2_PPM:
+	IMAGE -->  7 785 234 bytes
+	TEXT --> 944 779 bytes
+	
+	Bzip2_PPM(folder):
+	IMAGE:
+		Bzip2 --> 4.4041202 ratio
+		Bzip2_ppm --> 4.3656129 ratio
+	TEXT:
+		Bzip2 --> 3.7813426 ratio
+		Bzip2_ppm -->  3.5559099 ratio
+
+		
+##########################################################
+Tab5 - Performance of our algorithm
+
+
+BW_RLE_Bzip2:
+	BW_RLE_Bzip2(folder):
+
+		IMAGE:
+			bw -->  0.74322319 ratio
+				-> IMAGE = 45 729 625 bytes
+			bw_rle --> 1.0521640 ratio
+				-> IMAGE = 32 302 300 bytes
+				 
+			bw_rle_bzip2 --> 1.9418712 ratio
+				-> IMAGE = 17 502 354 bytes
+				
+		TEXT:
+			bw --> 0.96730808 ratio
+				-> TEXT = 3 473 091 bytes
+				 
+			bw_rle --> 0.97208947 ratio
+				-> TEXT = 3 456 008 bytes
+				
+			bw_rle_bzip2 --> 1.7204908 ratio
+				-> TEXT = 1 952 669 bytes
+
+
+
+
+
+	

@@ -31,9 +31,9 @@ def toString(data):
 def decodeRLE(string):
     res = ""
     for index in range(len(string)):
-        if (string[index] == '@'):
+        if string[index] == '@':
             res += int(string[index + 1]) * string[index + 2]
-        elif (string[index] != '@' and string[index - 1] != '@' and string[index - 2] != '@'):
+        elif string[index] != '@' and string[index - 1] != '@' and string[index - 2] != '@':
             res += string[index]
     return res
 
